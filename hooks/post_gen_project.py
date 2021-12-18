@@ -5,10 +5,12 @@ NOTE:
     can potentially be run in Python 2.x environment
     (at least so we presume in `pre_gen_project.py`).
 
-TODO: ? restrict Cookiecutter Django project initialization to Python 3.x environments only
+TODO: restrict Cookiecutter Django project initialization to
+      Python 3.x environments only
 """
 from __future__ import print_function
 
+import json
 import os
 import random
 import shutil
@@ -94,6 +96,16 @@ def remove_packagejson_file():
         os.remove(file_name)
 
 
+def remove_bootstrap_packages():
+    with open("package.json", mode="r") as fd:
+        content = json.load(fd)
+    for package_name in ["bootstrap", "gulp-concat", "@popperjs/core"]:
+        content["devDependencies"].pop(package_name)
+    with open("package.json", mode="w") as fd:
+        json.dump(content, fd, ensure_ascii=False, indent=2)
+        fd.write("\n")
+
+
 def remove_celery_files():
     file_names = [
         os.path.join("config", "celery_app.py"),
@@ -127,13 +139,6 @@ def remove_dotgithub_folder():
     shutil.rmtree(".github")
 
 
-def append_to_project_gitignore(path):
-    gitignore_file_path = ".gitignore"
-    with open(gitignore_file_path, "a") as gitignore_file:
-        gitignore_file.write(path)
-        gitignore_file.write(os.linesep)
-
-
 def generate_random_string(
     length, using_digits=False, using_ascii_letters=False, using_punctuation=False
 ):
@@ -164,8 +169,8 @@ def set_flag(file_path, flag, value=None, formatted=None, *args, **kwargs):
         random_string = generate_random_string(*args, **kwargs)
         if random_string is None:
             print(
-                "We couldn't find a secure pseudo-random number generator on your system. "
-                "Please, make sure to manually {} later.".format(flag)
+                "We couldn't find a secure pseudo-random number generator on your "
+                "system. Please, make sure to manually {} later.".format(flag)
             )
             random_string = flag
         if formatted is not None:
@@ -248,10 +253,10 @@ def set_celery_flower_password(file_path, value=None):
     return celery_flower_password
 
 
-def append_to_gitignore_file(s):
+def append_to_gitignore_file(ignored_line):
     with open(".gitignore", "a") as gitignore_file:
-        gitignore_file.write(s)
-        gitignore_file.write(os.linesep)
+        gitignore_file.write(ignored_line)
+        gitignore_file.write("\n")
 
 
 def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
@@ -380,6 +385,8 @@ def main():
         remove_packagejson_file()
         if "{{ cookiecutter.use_docker }}".lower() == "y":
             remove_node_dockerfile()
+    elif "{{ cookiecutter.custom_bootstrap_compilation }}" == "n":
+        remove_bootstrap_packages()
 
     if "{{ cookiecutter.cloud_provider}}".lower() == "none":
         print(
