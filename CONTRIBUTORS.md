@@ -636,6 +636,13 @@ Listed in alphabetical order.
     <td></td>
   </tr>
   <tr>
+    <td>Douglas</td>
+    <td>
+      <a href="https://github.com/douglascdev">douglascdev</a>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Duda Nogueira</td>
     <td>
       <a href="https://github.com/dudanogueira">dudanogueira</a>
@@ -1635,6 +1642,13 @@ Listed in alphabetical order.
       <a href="https://github.com/goldhand">goldhand</a>
     </td>
     <td>g01dhand</td>
+  </tr>
+  <tr>
+    <td>Will Gordon</td>
+    <td>
+      <a href="https://github.com/wgordon17">wgordon17</a>
+    </td>
+    <td></td>
   </tr>
   <tr>
     <td>William Archinal</td>

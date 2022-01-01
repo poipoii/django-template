@@ -16,6 +16,11 @@ PATTERN = r"{{(\s?cookiecutter)[.](.*?)}}"
 RE_OBJ = re.compile(PATTERN)
 IS_WINDOWS = sys.platform.startswith("win")
 
+if sys.platform.startswith("win"):
+    pytest.skip("sh doesn't support windows", allow_module_level=True)
+elif sys.platform.startswith("darwin") and os.getenv("CI"):
+    pytest.skip("skipping slow macOS tests on CI", allow_module_level=True)
+
 
 @pytest.fixture
 def context():
