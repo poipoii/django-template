@@ -325,15 +325,14 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_RENDERER_CLASSES": env.list(
+        "DJANGO_DEFAULT_RENDERER_CLASSES",
+        default=[
+            "rest_framework.renderers.JSONRenderer",
+            "rest_framework.renderers.BrowsableAPIRenderer",
+        ],
+    ),
 }
-# https://www.django-rest-framework.org/api-guide/settings/#default_renderer_classes
-DEFAULT_RENDERER_CLASSES = env.list(
-    "DJANGO_DEFAULT_RENDERER_CLASSES",
-    default=[
-        "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer",
-    ],
-)
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
