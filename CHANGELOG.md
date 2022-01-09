@@ -3,6 +3,43 @@ All enhancements and patches to Cookiecutter Django will be documented in this f
 
 <!-- GENERATOR_PLACEHOLDER -->
 
+## 2022.01.07
+
+### Fixed
+- Fix cache dependency path for linter job in CI workflow ([#3520](https://github.com/cookiecutter/cookiecutter-django/pull/3520))
+- Fix `open` option for `initBrowserSync` when using Docker ([#3519](https://github.com/cookiecutter/cookiecutter-django/pull/3519))
+### Updated
+- Update mypy to 0.931 ([#3521](https://github.com/cookiecutter/cookiecutter-django/pull/3521))
+- Update gitpython to 3.1.25 ([#3518](https://github.com/cookiecutter/cookiecutter-django/pull/3518))
+
+## 2022.01.06
+
+### Changed
+- Update output example in README ([#3512](https://github.com/cookiecutter/cookiecutter-django/pull/3512))
+
+## 2022.01.05
+
+### Changed
+- Update references to Bootstrap from v4 to v5 in README ([#3513](https://github.com/cookiecutter/cookiecutter-django/pull/3513))
+### Updated
+- Update requests to 2.27.1 ([#3516](https://github.com/cookiecutter/cookiecutter-django/pull/3516))
+
+## 2022.01.04
+
+### Changed
+- Double quote array expansions to avoid re-splitting elements ([#3514](https://github.com/cookiecutter/cookiecutter-django/pull/3514))
+### Updated
+- Update django to 3.2.11 ([#3510](https://github.com/cookiecutter/cookiecutter-django/pull/3510))
+
+## 2022.01.03
+
+### Changed
+- Convert top level RST files to Markdown ([#3489](https://github.com/cookiecutter/cookiecutter-django/pull/3489))
+### Updated
+- Update requests to 2.27.0 ([#3509](https://github.com/cookiecutter/cookiecutter-django/pull/3509))
+- Update pillow to 9.0.0 ([#3508](https://github.com/cookiecutter/cookiecutter-django/pull/3508))
+- Update pylint-django to 2.5.0 ([#3505](https://github.com/cookiecutter/cookiecutter-django/pull/3505))
+
 ## 2021.12.29
 
 ### Fixed
