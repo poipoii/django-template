@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/github/workflow/status/cookiecutter/cookiecutter-django/CI/master)](https://github.com/cookiecutter/cookiecutter-django/actions?query=workflow%3ACI)
 [![Documentation Status](https://readthedocs.org/projects/cookiecutter-django/badge/?version=latest)](https://cookiecutter-django.readthedocs.io/en/latest/?badge=latest)
 [![Updates](https://pyup.io/repos/github/cookiecutter/cookiecutter-django/shield.svg)](https://pyup.io/repos/github/cookiecutter/cookiecutter-django/)
-[![Join our Discord](https://img.shields.io/badge/Discord-cookiecutter-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/9BrxzPKuEW)
+[![Join our Discord](https://img.shields.io/badge/Discord-cookiecutter-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/uFXweDQc5a)
 [![Code Helpers Badge](https://www.codetriage.com/cookiecutter/cookiecutter-django/badges/users.svg)](https://www.codetriage.com/cookiecutter/cookiecutter-django)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
@@ -42,14 +42,14 @@ production-ready Django projects quickly.
 *These features can be enabled during initial project setup.*
 
 -   Serve static files from Amazon S3, Google Cloud Storage or [Whitenoise](https://whitenoise.readthedocs.io/)
--   Configuration for [Celery](http://www.celeryproject.org/) and [Flower](https://github.com/mher/flower) (the latter in Docker setup only)
+-   Configuration for [Celery](https://docs.celeryq.dev) and [Flower](https://github.com/mher/flower) (the latter in Docker setup only)
 -   Integration with [MailHog](https://github.com/mailhog/MailHog) for local email testing
 -   Integration with [Sentry](https://sentry.io/welcome/) for error logging
 
 ## Constraints
 
 -   Only maintained 3rd party libraries are used.
--   Uses PostgreSQL everywhere (10.19 - 14.1)
+-   Uses PostgreSQL everywhere: 10.19 - 14.1 ([MySQL fork](https://github.com/mabdullahadeel/cookiecutter-django-mysql) also available).
 -   Environment variables for configuration (This won't work with Apache/mod_wsgi).
 
 ## Support this Project!
@@ -63,13 +63,17 @@ Projects that provide financial support to the maintainers:
 
 ------------------------------------------------------------------------
 
-[![Two Scoops of Django](https://cdn.shopify.com/s/files/1/0304/6901/products/Two-Scoops-of-Django-3-Alpha-Cover_540x_26507b15-e489-470b-8a97-02773dd498d1_1080x.jpg){#Two Scoops of Django 3.x .align-center}](https://www.feldroy.com/products//two-scoops-of-django-3-x)
+<p align="center">
+  <a href="https://www.feldroy.com/products//two-scoops-of-django-3-x"><img src="https://cdn.shopify.com/s/files/1/0304/6901/products/Two-Scoops-of-Django-3-Alpha-Cover_540x_26507b15-e489-470b-8a97-02773dd498d1_1080x.jpg"></a>
+</p>
 
 Two Scoops of Django 3.x is the best ice cream-themed Django reference in the universe!
 
 ### PyUp
 
-[![pyup](https://pyup.io/static/images/logo.png){#pyup .align-center}](https://pyup.io/)
+<p align="center">
+  <a href="https://pyup.io/"><img src="https://pyup.io/static/images/logo.png"></a>
+</p>
 
 PyUp brings you automated security and dependency updates used by Google and other organizations. Free for open source projects!
 
@@ -117,16 +121,12 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     use_pycharm [n]: y
     use_docker [n]: n
     Select postgresql_version:
-    1 - 14.1
-    2 - 13.5
-    3 - 12.9
-    4 - 11.14
-    5 - 10.19
+    1 - 14
+    2 - 13
+    3 - 12
+    4 - 11
+    5 - 10
     Choose from 1, 2, 3, 4, 5 [1]: 1
-    Select js_task_runner:
-    1 - None
-    2 - Gulp
-    Choose from 1, 2 [1]: 1
     Select cloud_provider:
     1 - AWS
     2 - GCP
@@ -145,8 +145,11 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     Choose from 1, 2, 3, 4, 5, 6, 7, 8, 9 [1]: 1
     use_async [n]: n
     use_drf [n]: y
-    custom_bootstrap_compilation [n]: n
-    use_compressor [n]: n
+    Select frontend_pipeline:
+    1 - None
+    2 - Django Compressor
+    3 - Gulp
+    Choose from 1, 2, 3, 4 [1]: 1
     use_celery [n]: y
     use_mailhog [n]: n
     use_sentry [n]: y
@@ -185,7 +188,7 @@ For local development, see the following:
 
 -   Have questions? **Before you ask questions anywhere else**, please post your question on [Stack Overflow](http://stackoverflow.com/questions/tagged/cookiecutter-django) under the *cookiecutter-django* tag. We check there periodically for questions.
 -   If you think you found a bug or want to request a feature, please open an [issue](https://github.com/cookiecutter/cookiecutter-django/issues).
--   For anything else, you can chat with us on [Discord](https://discord.gg/9BrxzPKuEW).
+-   For anything else, you can chat with us on [Discord](https://discord.gg/uFXweDQc5a).
 
 ## For Readers of Two Scoops of Django
 
@@ -198,6 +201,10 @@ If you are using [PyUp](https://pyup.io) to keep your dependencies updated and s
 ## "Your Stuff"
 
 Scattered throughout the Python and HTML of this project are places marked with "your stuff". This is where third-party libraries are to be integrated with your project.
+
+## For MySQL users
+To get full MySQL support in addition to the default Postgresql, you can use this fork of the cookiecutter-django:
+https://github.com/mabdullahadeel/cookiecutter-django-mysql
 
 ## Releases
 
@@ -237,8 +244,3 @@ experience better.
 -   [How to create a Django Application using Cookiecutter and Django 1.8](https://www.swapps.io/blog/how-to-create-a-django-application-using-cookiecutter-and-django-1-8/) - Sept. 12, 2015
 
 Have a blog or online publication? Write about your cookiecutter-django tips and tricks, then send us a pull request with the link.
-
-## Code of Conduct
-
-Everyone interacting in the Cookiecutter project's codebases, issue trackers, chat
-rooms, and mailing lists is expected to follow the [PyPA Code of Conduct](https://www.pypa.io/en/latest/code-of-conduct/).
